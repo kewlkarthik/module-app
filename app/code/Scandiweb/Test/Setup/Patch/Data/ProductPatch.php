@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Scandiweb\Test\Setup\Patch\Data;
 
@@ -66,6 +67,11 @@ class ProductPatch implements DataPatchInterface
     protected array $sourceItems = [];
 
     /**
+     * @var CategoryLinkManagementInterface
+     */
+    protected CategoryLinkManagementInterface $categoryLink;
+
+    /**
      * Migration patch constructor.
      *
      * @param ProductInterfaceFactory $productInterfaceFactory
@@ -86,8 +92,7 @@ class ProductPatch implements DataPatchInterface
         SourceItemInterfaceFactory      $sourceItemFactory,
         SourceItemsSaveInterface        $sourceItemsSaveInterface,
         CategoryLinkManagementInterface $categoryLink
-    )
-    {
+    ) {
         $this->appState = $appState;
         $this->productInterfaceFactory = $productInterfaceFactory;
         $this->productRepository = $productRepository;
